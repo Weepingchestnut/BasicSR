@@ -8,10 +8,8 @@ datasets:
   test:
     name: Vid4
     type: VideoTestDataset
-#    dataroot_gt: datasets/Vid4/GT
-    dataroot_gt: /data1/lzk_data/workspace/BasicSR/datasets/Vid4/GT
-#    dataroot_lq: datasets/Vid4/BIx4
-    dataroot_lq: /data1/lzk_data/workspace/BasicSR/datasets/Vid4/BIx4
+    dataroot_gt: datasets/Vid4/GT
+    dataroot_lq: datasets/Vid4/BIx4
     io_backend:
       type: disk
 
@@ -36,8 +34,7 @@ network_g:
 
 # path
 path:
-#  pretrain_network_g: experiments/pretrained_models/EDVR/EDVR_L_x4_SR_Vimeo90K_official-162b54e4.pth
-  pretrain_network_g: /data1/lzk_data/workspace/BasicSR/experiments/pretrained_models/EDVR/EDVR_L_x4_SR_Vimeo90K_official-162b54e4.pth
+  pretrain_network_g: experiments/pretrained_models/EDVR/EDVR_L_x4_SR_Vimeo90K_official-162b54e4.pth
   strict_load_g: true
 
 # validation settings
@@ -45,17 +42,8 @@ val:
   save_img: true
   suffix: ~  # add suffix to saved images, if None, use exp name
 
-#  metrics:
-#    psnr: # metric name, can be arbitrary
-#      type: calculate_psnr
-#      crop_border: 0
-#      test_y_channel: false
   metrics:
-    psnr_y: # metric name, can be arbitrary
+    psnr: # metric name, can be arbitrary
       type: calculate_psnr
       crop_border: 0
-      test_y_channel: true
-    ssim_y:
-      type: calculate_ssim
-      crop_border: 0
-      test_y_channel: true
+      test_y_channel: false
